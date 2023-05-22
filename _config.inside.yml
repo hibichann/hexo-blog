@@ -1,0 +1,21 @@
+# Sidebar profile
+profile:
+  # 邮箱用于生成 gravatar 头像，如配置了 `hexo.config.email`，此项可缺省
+  email: coder101011@outlook.com
+
+  # 也可以直接设置头像 URL
+  # avatar:
+
+  # 个性签名
+  bio: A Front-end developer's Blog.
+menu:
+  主页: /
+  关于: /about
+  搜索: /search
+  Github: https://github.com/hibichann
+sns:
+  email: coder101011@outlook.com
+  github: https://github.com/hibichann
+  twitter: https://twitter.com/misaka_level0
+  telegram: https://t.me/hibichann
+  qq: 321606998
