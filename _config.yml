@@ -2,7 +2,11 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 # Favicon
-favicon: /favicon.ico
+favicon:
+  small: /favicon.ico
+  medium: /favicon.ico
+  apple_touch_icon: /favicon.ico
+  safari_pinned_tab: /favicon.ico
 # Site
 title: Hibi's Blog
 subtitle: ""
