@@ -2,7 +2,6 @@
 title: Hello World
 categories:
   - 首页
-  ---首页1
 tags:
   - jQuery
   - 表格
