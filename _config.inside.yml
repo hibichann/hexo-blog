@@ -19,3 +19,27 @@ sns:
   twitter: https://twitter.com/misaka_level0
   telegram: https://t.me/hibichann
   qq: 321606998
+search:
+  # 在页面右下角的 FAB 按钮里显示快捷搜索入口
+  fab: true
+
+  # 额外生成 search 页面，可配置在 sidebar 导航，如 `Search: /search`
+  page: true
+
+  # 以上两个入口必须至少设置一个，否则视为无效配置
+
+  # 本地搜索，即生成本地 json 文件
+  adapter:
+    # json 数据的范围，数组
+    range:
+      - post
+      - page
+
+    # json 数据的条目限制
+    # 假如 `limit:1000`，同时有 800 篇 post，800 篇 page，则最终生成的数据包含：
+    # 800 篇 post，200 篇 page
+    # 缺省值 `10000`
+    limit: 10000
+
+    # 搜索结果分页大小，缺省值 `10`
+    per_page: 10
