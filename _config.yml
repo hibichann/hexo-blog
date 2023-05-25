@@ -1,7 +1,8 @@
 # Hexo Configuration
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
-
+# Favicon
+favicon: /favicon.ico
 # Site
 title: Hibi's Blog
 subtitle: ""
