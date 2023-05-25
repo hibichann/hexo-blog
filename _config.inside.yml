@@ -4,7 +4,7 @@ profile:
   email: coder101011@outlook.com
 
   # 也可以直接设置头像 URL
-  # avatar:
+  avatar: https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305251546476.jpg
 
   # 个性签名
   bio: A Front-end developer's Blog.
@@ -12,6 +12,7 @@ menu:
   主页: /
   关于: /about
   搜索: /search
+  分类: /category
   Github: https://github.com/hibichann
 sns:
   email: coder101011@outlook.com
@@ -19,6 +20,9 @@ sns:
   twitter: https://twitter.com/misaka_level0
   telegram: https://t.me/hibichann
   qq: 321606998
+category:
+  # 分类页分页大小，缺省值 `10`
+  per_page: 10
 search:
   # 在页面右下角的 FAB 按钮里显示快捷搜索入口
   fab: true
