@@ -1,7 +1,3 @@
-skip_render:
-  - "/dist/**"
-  - "/dist/robo/**"
-  - "/dist/robo/*.html"
 appearance:
   content_width: 870
 # Sidebar profile
