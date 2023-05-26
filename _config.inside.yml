@@ -15,12 +15,12 @@ menu:
   关于: /about
   搜索: /search
   Github: https://github.com/hibichann
+  RoboPunk: /dist/robo/index.html
 sns:
   email: coder101011@outlook.com
   github: https://github.com/hibichann
   twitter: https://twitter.com/misaka_level0
   telegram: https://t.me/hibichann
-  facebook: /dist/robo/index.html
   qq: 321606998
 category:
   # 分类页分页大小，缺省值 `10`
