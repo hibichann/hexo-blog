@@ -21,7 +21,7 @@ footer:
   since: 2023
 sidebar:
 # Sidebar Position - 侧栏位置（只对Pisces | Gemini两种风格有效）
-  position: left        
+  position: right        
   #position: right      
 # Sidebar Display - 侧栏显示时机（只对Muse | Mist两种风格有效）
   display: post        
