@@ -41,7 +41,7 @@ date: 2021-06-16 00:34:27
          height: 3rem!important;
          margin:0!important;
          margin-right: 1em!important;
-         border-radius:4px;
+         border-radius:999px;
          }
          .card .card-header {
          font-style: italic;
@@ -79,12 +79,39 @@ date: 2021-06-16 00:34:27
                </div>
             </div>
             <div class="card">
-               <img class="ava" src="https://yingwiki.top/avatar" />
+               <img class="ava" src="https://cdn.jsdelivr.net/gh/hvnobug/assets/common/avatar.png" />
                <div class="card-header">
                   <div>
-                     <a href="https://yingwiki.top">越行勤's Blog</a>
+                     <a href="https://blog.hvnobug.com/">Emil’s blog</a>
                   </div>
-                  <div class="info">努力学习的小菜鸟</div>
+                  <div class="info">这是一个分享IT技术的小站。</div>
+               </div>
+            </div>
+            <div class="card">
+               <img class="ava" src="https://cdn.jsdelivr.net/gh/hvnobug/assets/common/avatar.png" />
+               <div class="card-header">
+                  <div>
+                     <a href="https://blog.hvnobug.com/">Emil’s blog</a>
+                  </div>
+                  <div class="info">这是一个分享IT技术的小站。</div>
+               </div>
+            </div>
+            <div class="card">
+               <img class="ava" src="https://cdn.jsdelivr.net/gh/hvnobug/assets/common/avatar.png" />
+               <div class="card-header">
+                  <div>
+                     <a href="https://blog.hvnobug.com/">Emil’s blog</a>
+                  </div>
+                  <div class="info">这是一个分享IT技术的小站。</div>
+               </div>
+            </div>
+            <div class="card">
+               <img class="ava" src="https://cdn.jsdelivr.net/gh/hvnobug/assets/common/avatar.png" />
+               <div class="card-header">
+                  <div>
+                     <a href="https://blog.hvnobug.com/">Emil’s blog</a>
+                  </div>
+                  <div class="info">这是一个分享IT技术的小站。</div>
                </div>
             </div>
          </div>

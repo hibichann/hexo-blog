@@ -5,7 +5,7 @@ menu:
   tags: /tags/ || fa fa-tags
   categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
-  Links: /links/ || fa fa-link
+  友链: /links/ || fa fa-link
   # Github: https://github.com/hibichann
   # RoboPunk: https://robopunk.pages.dev
   # Krypt: https://krypt-test.pages.dev/
@@ -56,3 +56,23 @@ social:
 #   enable: true
 #   icons_only: false
 #   transition: false
+# Multiple Comment System Support
+comments:
+  # Available values: tabs | buttons
+  style: tabs
+  # Choose a comment system to be displayed by default
+  # Available values: disqus | disqusjs | changyan | livere | gitalk | utterances | isso
+  active: true
+  # Setting `true` means remembering the comment system selected by the visitor
+  storage: true
+  # Lazyload all comment systems.
+  lazyload: true
+  # Modify icons and texts for any style, here are some examples
+  nav:
+    disqus:
+     text: Load Disqus
+     order: -1
+disqus:
+  enable: true
+  shortname: hibichann
+  count: true
