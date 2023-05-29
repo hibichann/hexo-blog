@@ -10,7 +10,7 @@ menu:
   # Krypt: https://krypt-test.pages.dev/
 menu_icons:
   enable: true
-# scheme: Muse
+scheme: Mist
 avatar: /pfp.jpg
 footer: 
   since: 2023
