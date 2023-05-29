@@ -74,5 +74,5 @@ comments:
      order: -1
 disqus:
   enable: true
-  shortname: hibi.pages.dev
+  shortname: hibi-pages-dev
   count: true
