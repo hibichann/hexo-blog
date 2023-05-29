@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hans">
 <head><!-- hexo injector head_begin start -->
-<script src="/config.1fba88424bc8b166616e.js"></script>
+<script src="/config.3a6fc0c16b44ec9bc445.js"></script>
 <!-- hexo injector head_begin end -->
 <meta charset="utf-8">
 <title>在 element-plus 中保持菜单展开 - Hibi's Blog</title>
@@ -17,14 +17,14 @@
 <meta property="og:site_name" content="Hibi&#39;s Blog">
 <meta property="og:description" content="​ 在element plus中，有时我们需要始终保持菜单的展开状态（如单独的全展开的分类页），而在 element plus 中并未提供相应的属性。 但是可以首先为el-menu设置default-openeds 属性，值为需要展开的菜单。 然后直接在el-menu的属性中，为菜单创建ref实例，并绑定close方法，在close方法中调用菜单实例身上的open方法来再次展开这个菜单。 ​需要保">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305251546476.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/img1.png">
 <meta property="article:published_time" content="2023-02-22T20:35:12.000Z">
-<meta property="article:modified_time" content="2023-05-29T02:19:53.916Z">
+<meta property="article:modified_time" content="2023-05-29T02:22:10.515Z">
 <meta property="article:author" content="Hibichann">
 <meta property="article:tag" content="Vue3">
 <meta property="article:tag" content="Element Plus">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305251546476.jpg">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/img1.png">
 
 
 <!-- hexo injector head_end start --><style is="theme">html{--inside-accent-color:#2a2b33;--inside-foreground-color:#363636;--inside-border-color:#e0e0e0;--inside-background:#f3f6f7;--inside-sidebar-background:#2a2b33;--inside-card-background:#fff;--inside-font-base:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;--inside-font-logo:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;--inside-font-menu:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;--inside-font-heading:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;--inside-font-label:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;--inside-font-code:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;--inside-font-print:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;--inside-content-width:900px;--inside-highlight-00:#ffffff;--inside-highlight-01:#e0e0e0;--inside-highlight-02:#f3f6f7;--inside-highlight-03:#95a5b3;--inside-highlight-04:#363636;--inside-highlight-05:#262b2f;--inside-highlight-06:#000000;--inside-highlight-07:#000000;--inside-highlight-08:#5d6c7b;--inside-highlight-09:#40464a;--inside-highlight-0a:#2980b9;--inside-highlight-0b:#be516e;--inside-highlight-0c:#237dac;--inside-highlight-0d:#944770;--inside-highlight-0e:#239371;--inside-highlight-0f:#edf0f3;--inside-card-color:#fff;--inside-accent-color-005:rgba(42,43,51,.05);--inside-accent-color-01:rgba(42,43,51,.1);--inside-accent-color-02:rgba(42,43,51,.2);--inside-accent-color-04:rgba(42,43,51,.4);--inside-accent-color-08:rgba(42,43,51,.8)}</style><script src="/theme.9ecc9ab1.js"></script><link href="/styles.91e7dfca63c7c151daa6.css" rel="stylesheet"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
