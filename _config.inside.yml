@@ -6,7 +6,8 @@ profile:
   email: coder101011@outlook.com
 
   # 也可以直接设置头像 URL
-  avatar: https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305251546476.jpg
+  # avatar: https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305251546476.jpg
+  avatar: /pfp.jpg
 
   # 个性签名
   bio: A Front-end developer's Blog.

@@ -1,0 +1,52 @@
+# Menu configuration.
+menu:
+  home: / || fa fa-home
+  about: /about/ || fa fa-user
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  archives: /archives/ || fa fa-archive
+  # Github: https://github.com/hibichann
+  # RoboPunk: https://robopunk.pages.dev
+  # Krypt: https://krypt-test.pages.dev/
+menu_icons:
+  enable: true
+# scheme: Muse
+avatar: /pfp.jpg
+footer: 
+  since: 2023
+sidebar:
+# Sidebar Position - 侧栏位置（只对Pisces | Gemini两种风格有效）
+  position: left        
+  #position: right      
+# Sidebar Display - 侧栏显示时机（只对Muse | Mist两种风格有效）
+  display: post        
+  # display: always       
+  #display: hide        
+  #display: remove      
+  # 文章间距（只对Pisces | Gemini两种风格有效）
+  offset: 12            
+  # 返回顶部按钮（只对Pisces | Gemini两种风格有效）
+  b2t: true            
+  # //返回顶部按钮的百分比
+  scrollpercent: true   
+
+
+# Algolia Search
+local_search:
+  enable: true
+  # if auto, trigger search by changing input
+  # if manual, trigger search by pressing enter key or search button
+  trigger: auto
+  # show top n results per article, show all results by setting to -1
+  top_n_per_article: 1
+
+social:
+  E-Mail: mailto:coder101011@outlook.com || envelope
+  Github: https://github.com/hibichann || github
+  Twitter: https://twitter.com/misaka_level0 || twitter
+  Telegram: https://t.me/hibichann || telegram
+  # qq: 321606998
+# social_icons:
+#   enable: true
+#   icons_only: false
+#   transition: false
