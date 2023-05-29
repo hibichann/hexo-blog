@@ -11,11 +11,12 @@ profile:
   # 个性签名
   bio: A Front-end developer's Blog.
 menu:
-  主页: /
-  关于: /about
-  搜索: /search
+  🏠主页: /
+  🧑‍💻关于: /about
+  🔍搜索: /search
   Github: https://github.com/hibichann
-  RoboPunk: /dist/robo
+  RoboPunk: https://robopunk.pages.dev
+  Krypt: https://krypt-test.pages.dev/
 sns:
   email: coder101011@outlook.com
   github: https://github.com/hibichann

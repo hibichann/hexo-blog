@@ -6,6 +6,7 @@ categories:
 tags:
   - Vue
   - SASS/SCSS
+thumbnail: "https://cdn.jsdelivr.net/gh/hibichann/picgo@main/%E8%AD%A6%E5%91%8A.jpg #26303A"
 ---
 
 在 sass/scss 项目中
