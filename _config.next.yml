@@ -12,6 +12,11 @@ menu_icons:
   enable: true
 scheme: Mist
 avatar: /pfp.jpg
+favicon:
+  small: /favicon.ico
+  medium: /favicon.ico
+  apple_touch_icon: /favicon.ico
+  safari_pinned_tab: /favicon.ico
 footer: 
   since: 2023
 sidebar:
