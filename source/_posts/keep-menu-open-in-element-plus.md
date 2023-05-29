@@ -6,6 +6,7 @@ categories:
 tags:
   - Vue3
   - Element Plus
+thumbnail: "https://cdn.jsdelivr.net/gh/hibichann/picgo@main/img1.png #26303A"
 ---​
 
 在element plus中，有时我们需要始终保持菜单的展开状态（如单独的全展开的分类页），而在 element plus 中并未提供相应的属性。
