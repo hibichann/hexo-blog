@@ -70,9 +70,16 @@ comments:
   # Modify icons and texts for any style, here are some examples
   nav:
     disqus:
-     text: Load Disqus
-     order: 1
+      text: Load Disqus
+      order: 1
+    changyan:
+      order: 2
 disqus:
   enable: true
   shortname: hibi-pages-dev
+  count: true
+changyan:
+  enable: false
+  appid: cywHvQdMi
+  appkey: 64c969639066247f965536a0d1f4e83c
   count: true
