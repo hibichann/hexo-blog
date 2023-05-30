@@ -66,12 +66,12 @@ comments:
   # Setting `true` means remembering the comment system selected by the visitor
   storage: true
   # Lazyload all comment systems.
-  lazyload: true
+  lazyload: false
   # Modify icons and texts for any style, here are some examples
   nav:
     disqus:
      text: Load Disqus
-     order: -1
+     order: 1
 disqus:
   enable: true
   shortname: hibi-pages-dev
