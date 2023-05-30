@@ -71,15 +71,15 @@ comments:
   nav:
     disqus:
       text: Load Disqus
-      order: 1
+      order: -1
     changyan:
-      order: 2
+      order: -2
 disqus:
   enable: true
   shortname: hibi-pages-dev
   count: true
 changyan:
-  enable: false
+  enable: true
   appid: cywHvQdMi
   appkey: 64c969639066247f965536a0d1f4e83c
   count: true
