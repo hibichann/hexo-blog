@@ -18,24 +18,23 @@ favicon:
   medium: /favicon.ico
   apple_touch_icon: /favicon.ico
   safari_pinned_tab: /favicon.ico
-footer: 
+footer:
   since: 2023
 sidebar:
-# Sidebar Position - 侧栏位置（只对Pisces | Gemini两种风格有效）
-  position: right        
-  #position: right      
-# Sidebar Display - 侧栏显示时机（只对Muse | Mist两种风格有效）
-  display: post        
-  # display: always       
-  #display: hide        
-  #display: remove      
+  # Sidebar Position - 侧栏位置（只对Pisces | Gemini两种风格有效）
+  position: right
+  #position: right
+  # Sidebar Display - 侧栏显示时机（只对Muse | Mist两种风格有效）
+  display: post
+  # display: always
+  #display: hide
+  #display: remove
   # 文章间距（只对Pisces | Gemini两种风格有效）
-  offset: 12            
+  offset: 12
   # 返回顶部按钮（只对Pisces | Gemini两种风格有效）
-  b2t: true            
+  b2t: true
   # //返回顶部按钮的百分比
-  scrollpercent: true   
-
+  scrollpercent: true
 
 # Algolia Search
 local_search:
@@ -70,9 +69,10 @@ comments:
   # Modify icons and texts for any style, here are some examples
   nav:
     disqus:
-      text: Load Disqus
+      text: Disqus
       order: -1
     changyan:
+      text: 畅言
       order: -2
 disqus:
   enable: true

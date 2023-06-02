@@ -30,7 +30,7 @@ date: 2021-06-16 00:34:27
          float: right;
          }
          .card:hover {
-         transform: scale(1.1);
+         transform: scale(1.05);
          box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);
          }
          .card a {
@@ -69,42 +69,6 @@ date: 2021-06-16 00:34:27
       </style>
       <div class="links-content">
          <div class="link-navigation">
-            <div class="card">
-               <img class="ava" src="https://cdn.jsdelivr.net/gh/hvnobug/assets/common/avatar.png" />
-               <div class="card-header">
-                  <div>
-                     <a href="https://blog.hvnobug.com/">Emil’s blog</a>
-                  </div>
-                  <div class="info">这是一个分享IT技术的小站。</div>
-               </div>
-            </div>
-            <div class="card">
-               <img class="ava" src="https://cdn.jsdelivr.net/gh/hvnobug/assets/common/avatar.png" />
-               <div class="card-header">
-                  <div>
-                     <a href="https://blog.hvnobug.com/">Emil’s blog</a>
-                  </div>
-                  <div class="info">这是一个分享IT技术的小站。</div>
-               </div>
-            </div>
-            <div class="card">
-               <img class="ava" src="https://cdn.jsdelivr.net/gh/hvnobug/assets/common/avatar.png" />
-               <div class="card-header">
-                  <div>
-                     <a href="https://blog.hvnobug.com/">Emil’s blog</a>
-                  </div>
-                  <div class="info">这是一个分享IT技术的小站。</div>
-               </div>
-            </div>
-            <div class="card">
-               <img class="ava" src="https://cdn.jsdelivr.net/gh/hvnobug/assets/common/avatar.png" />
-               <div class="card-header">
-                  <div>
-                     <a href="https://blog.hvnobug.com/">Emil’s blog</a>
-                  </div>
-                  <div class="info">这是一个分享IT技术的小站。</div>
-               </div>
-            </div>
             <div class="card">
                <img class="ava" src="https://cdn.jsdelivr.net/gh/hvnobug/assets/common/avatar.png" />
                <div class="card-header">
