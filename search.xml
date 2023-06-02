@@ -30,6 +30,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Ant Design的菜单常用设置</title>
+    <url>/2023/06/02/ant-menu-common/</url>
+    <content><![CDATA[<p>1.实现手风琴模式<br>Ant Design 默认没有为菜单组件提供手风琴模式的配置项，需要自己手动实现</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">handleChange</span> = (<span class="params">Keys: string[]</span>) =&gt; &#123;</span><br><span class="line">	<span class="comment">// 实现手风琴</span></span><br><span class="line">	<span class="title function_">setOpenKeys</span>([<span class="title class_">Keys</span>[<span class="title class_">Keys</span>.<span class="property">length</span> - <span class="number">1</span>]])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把该函数绑定在 menu 的 <code>onOpenChange</code>回调函数上，原理是该事件会传递一个已打开的菜单项的<code>key</code>的数组，而且是 push 进去的，数组的最后一项总是最新打开的一项，所以可以把<code>openkeys</code>设置为该数组的最后一项</p>
+<p>2.在二级菜单下刷新页面时保留菜单选中和展开</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> firstOpen = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="comment">//菜单的key设置为路由地址，获取当前Url地址</span></span><br><span class="line"><span class="keyword">const</span> location = <span class="title function_">useLocation</span>()</span><br><span class="line"><span class="comment">//用于寻找key和当前页面地址对应项</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">findkey</span> = (<span class="params">obj: ItemType</span>) =&gt; obj?.<span class="property">key</span> === location.<span class="property">pathname</span></span><br><span class="line">items.<span class="title function_">forEach</span>(<span class="function">(<span class="params">i: any</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 若菜单项的children不为空数组，去查找二级菜单中是否有对应的key</span></span><br><span class="line">	<span class="keyword">if</span> (i?.<span class="property">children</span> &amp;&amp; i?.<span class="property">children</span>.<span class="property">length</span> &gt; <span class="number">1</span> &amp;&amp; i?.<span class="property">children</span>.<span class="title function_">find</span>(findkey)) &#123;</span><br><span class="line">		firstOpen = i.<span class="property">key</span></span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(firstOpen)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> [openKeys, setOpenKeys] = <span class="title function_">useState</span>([firstOpen] <span class="keyword">as</span> string[])</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>React</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+        <tag>Ant Design</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>初识Vue3</title>
     <url>/2022/07/26/first-vue3/</url>
     <content><![CDATA[<h4 id="首次学习-vue3-时的笔记"><a href="#首次学习-vue3-时的笔记" class="headerlink" title="首次学习 vue3 时的笔记"></a>首次学习 vue3 时的笔记</h4><p>要从单个绑定获取多个 ref，请将  <code>ref</code>  绑定到一个更灵活的函数上：</p>
