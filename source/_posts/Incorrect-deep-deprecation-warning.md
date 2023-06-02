@@ -4,7 +4,7 @@ date: 2023-05-12 12:35:23
 categories:
   - CSS
 tags:
-  - Vue
+  - Vue3
   - SASS/SCSS
 thumbnail: "https://cdn.jsdelivr.net/gh/hibichann/picgo@main/%E8%AD%A6%E5%91%8A.jpg #26303A"
 ---
