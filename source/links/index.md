@@ -38,10 +38,11 @@ date: 2021-06-16 00:34:27
          }
          .card .ava {
          width: 3rem!important;
-         height: 3rem!important;
+         /* height: 3rem!important; */
          margin:0!important;
          margin-right: 1em!important;
          border-radius:999px;
+         object-fit:cover
          }
          .card .card-header {
          font-style: italic;
@@ -82,6 +83,8 @@ date: 2021-06-16 00:34:27
          <span>&nbsp;&nbsp;&nbsp;&nbsp;博客链接:</span><br/>
          <span>&nbsp;&nbsp;&nbsp;&nbsp;简介:</span><br/>
          </div>
+      <div style="height:5px;"></div>
+      <div style="height:5px;"></div>
       <div class="links-of-author motion-element" style="opacity: 1; display: block; transform: translateX(0px);
       padding:0 25px;background:#eee;border-left:5px solid #555;">
       <span class="links-of-author-item">

@@ -7,7 +7,7 @@ date: 2023-06-06 16:42:01
 <div class="">
     <a class="robo" href="https://robopunk.pages.dev/">Robo Punk</a>
     <br/>
-    <a class="krypt" href="https://krypt-test.pages.dev/"><img src="./logo.png" /></a>
+    <a class="krypt" href="https://krypt-test.pages.dev/"><img src="/things/logo.png" /></a>
 </div>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
@@ -40,5 +40,7 @@ date: 2023-06-06 16:42:01
 }
 .krypt img{
     margin: 0 auto !important;
+    width:100%;
+    height:100%;
 }
 </style>
