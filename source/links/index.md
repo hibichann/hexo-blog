@@ -66,9 +66,48 @@ date: 2021-06-16 00:34:27
          overflow: hidden;
          white-space: nowrap;
          }
+         .link-re{
+            padding:10px;
+            background:#eee;
+            border-left:5px solid #555;
+            font-size:16px;
+         }
       </style>
       <div class="links-content">
          <div class="link-navigation">
+         <div class="link-re">
+         <span>申请格式:</span>
+         <br/>
+         <span>&nbsp;&nbsp;&nbsp;&nbsp;头像链接:</span><br/>
+         <span>&nbsp;&nbsp;&nbsp;&nbsp;博客链接:</span><br/>
+         <span>&nbsp;&nbsp;&nbsp;&nbsp;简介:</span><br/>
+         </div>
+      <div class="links-of-author motion-element" style="opacity: 1; display: block; transform: translateX(0px);
+      padding:0 25px;background:#eee;border-left:5px solid #555;">
+      <span class="links-of-author-item">
+        <a href="mailto:coder101011@outlook.com" title="E-Mail → mailto:coder101011@outlook.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/hibichann" title="Github → https://github.com/hibichann" rel="noopener" target="_blank"><i class="github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/misaka_level0" title="Twitter → https://twitter.com/misaka_level0" rel="noopener" target="_blank"><i class="twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/hibichann" title="Telegram → https://t.me/hibichann" rel="noopener" target="_blank"><i class="telegram fa-fw"></i>Telegram</a>
+      </span>
+      </div>
+      <div style="height:5px;"></div>
+      <div style="height:5px;"></div>
+            <div class="card">
+               <img class="ava" src="https://api.fireplace-of-despair.org/static/1656947872.435161.jpg" />
+               <div class="card-header">
+                  <div>
+                     <a href="https://fireplace-of-despair.org/">FIREPLACE OF DESPAIR</a>
+                  </div>
+                  <div class="info">A jack of all trades and a one-man army.</div>
+               </div>
+            </div>
             <div class="card">
                <img class="ava" src="https://cdn.jsdelivr.net/gh/hvnobug/assets/common/avatar.png" />
                <div class="card-header">
