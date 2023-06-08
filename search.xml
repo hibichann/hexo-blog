@@ -3,22 +3,20 @@
   <entry>
     <title>错误的v-deep弃用警告</title>
     <url>/2023/05/12/Incorrect-deep-deprecation-warning/</url>
-    <content><![CDATA[<p>在 sass&#x2F;scss 项目中</p>
+    <content><![CDATA[<p>在 sass/scss 项目中</p>
 <p>注意到项目中经常会有关于<code>::v-deep</code>的弃用警告，但是项目里又搜不到<code>::v-deep</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/%E8%AD%A6%E5%91%8A.jpg" alt="警告"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/%E6%B2%A1%E6%9C%89v-deep.jpg" alt="没有::v-deep"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/%E8%AD%A6%E5%91%8A.jpg" alt="警告" loading="lazy" class="φbp"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/%E6%B2%A1%E6%9C%89v-deep.jpg" alt="没有::v-deep" loading="lazy" class="φbp"></p>
 <p>然后也去查看了源码里关于这段报错的：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305151015288.png" alt="vdeep判断部分源码"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305151015288.png" alt="vdeep判断部分源码" loading="lazy" class="φbp"></p>
 <p>打印 n.nodes：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305151017431.png" alt="n.nodes"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305151017431.png" alt="n.nodes" loading="lazy" class="φbp"></p>
 <p>依旧无果，最终在 vuejs 的 issue 中找到:</p>
-<p><a href="https://github.com/vuejs/core/issues/4745">Misleading deprecation warning about “::v-deep”, when “:deep” is used in a nested block with SASS</a></p>
+<p><a href="https://github.com/vuejs/core/issues/4745" target="_blank">Misleading deprecation warning about “::v-deep”, when “:deep” is used in a nested block with SASS</a></p>
 <p>实际上是:deep 使用错误，应该是</p>
 <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line">:<span class="built_in">deep</span>(.ClassName) &#123;</span><br><span class="line">	<span class="comment">// more rules</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>而非</p>
 <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line">:deep .ClassName &#123;</span><br><span class="line">	<span class="comment">// more rules</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>虽然后者也能工作，但是会错误地触发::v-deep 弃用警告</p>
 ]]></content>
       <categories>
@@ -32,9 +30,9 @@
   <entry>
     <title>Ant Design的菜单常用设置</title>
     <url>/2023/06/02/ant-menu-common/</url>
-    <content><![CDATA[<p>1.实现手风琴模式<br>Ant Design 默认没有为菜单组件提供手风琴模式的配置项，需要自己手动实现</p>
+    <content><![CDATA[<p>1.实现手风琴模式<br>
+Ant Design 默认没有为菜单组件提供手风琴模式的配置项，需要自己手动实现</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">handleChange</span> = (<span class="params">Keys: string[]</span>) =&gt; &#123;</span><br><span class="line">	<span class="comment">// 实现手风琴</span></span><br><span class="line">	<span class="title function_">setOpenKeys</span>([<span class="title class_">Keys</span>[<span class="title class_">Keys</span>.<span class="property">length</span> - <span class="number">1</span>]])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>把该函数绑定在 menu 的 <code>onOpenChange</code>回调函数上，原理是该事件会传递一个已打开的菜单项的<code>key</code>的数组，而且是 push 进去的，数组的最后一项总是最新打开的一项，所以可以把<code>openkeys</code>设置为该数组的最后一项</p>
 <p>2.在二级菜单下刷新页面时保留菜单选中和展开</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> firstOpen = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="comment">//菜单的key设置为路由地址，获取当前Url地址</span></span><br><span class="line"><span class="keyword">const</span> location = <span class="title function_">useLocation</span>()</span><br><span class="line"><span class="comment">//用于寻找key和当前页面地址对应项</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">findkey</span> = (<span class="params">obj: ItemType</span>) =&gt; obj?.<span class="property">key</span> === location.<span class="property">pathname</span></span><br><span class="line">items.<span class="title function_">forEach</span>(<span class="function">(<span class="params">i: any</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 若菜单项的children不为空数组，去查找二级菜单中是否有对应的key</span></span><br><span class="line">	<span class="keyword">if</span> (i?.<span class="property">children</span> &amp;&amp; i?.<span class="property">children</span>.<span class="property">length</span> &gt; <span class="number">1</span> &amp;&amp; i?.<span class="property">children</span>.<span class="title function_">find</span>(findkey)) &#123;</span><br><span class="line">		firstOpen = i.<span class="property">key</span></span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(firstOpen)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> [openKeys, setOpenKeys] = <span class="title function_">useState</span>([firstOpen] <span class="keyword">as</span> string[])</span><br></pre></td></tr></table></figure>
@@ -50,9 +48,9 @@
   <entry>
     <title>初识Vue3</title>
     <url>/2022/07/26/first-vue3/</url>
-    <content><![CDATA[<h4 id="首次学习-vue3-时的笔记"><a href="#首次学习-vue3-时的笔记" class="headerlink" title="首次学习 vue3 时的笔记"></a>首次学习 vue3 时的笔记</h4><p>要从单个绑定获取多个 ref，请将  <code>ref</code>  绑定到一个更灵活的函数上：</p>
+    <content><![CDATA[<h4 id="首次学习-vue3-时的笔记">首次学习 vue3 时的笔记<a title="#首次学习-vue3-时的笔记" href="#首次学习-vue3-时的笔记"></a></h4>
+<p>要从单个绑定获取多个 ref，请将  <code>ref</code>  绑定到一个更灵活的函数上：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">&quot;item in list&quot;</span> <span class="attr">:ref</span>=<span class="string">&quot;setItemRef&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p><code>$attrs</code>  现在包含了所有传递给组件的 <code>attribute</code>，包括  <code>class</code>  和  <code>style</code>。</p>
 <p><code>ref()</code>用于基本类型 <code>reactive()</code>用于对象或数组 实现深层的响应式数据</p>
 <p>具名插槽 <code>slot=“qwe” </code>&gt;&gt;&gt;&gt;<code> v-solt:qwe</code></p>
@@ -65,50 +63,50 @@
 <p><code>emit</code>分发自定义事件的函数，用于触发自定义事件</p>
 <p><code>expose</code> 指定组件向父组件暴露出去的公共函数</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">watch</span>(prop, <span class="title function_">callback</span>(newValue,oldValue)=&gt;&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;, &#123;immediate：<span class="literal">true</span>,<span class="attr">deep</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-<h6 id="watch-监听对象"><a href="#watch-监听对象" class="headerlink" title="watch 监听对象"></a>watch 监听对象</h6><p>1 监听<code>reactive</code>定义的对象时 <code>oldValue</code>无法正确获取，</p>
+<h6 id="watch-监听对象">watch 监听对象<a title="#watch-监听对象" href="#watch-监听对象"></a></h6>
+<p>1 监听<code>reactive</code>定义的对象时 <code>oldValue</code>无法正确获取，</p>
 <p>2 监听<code>reactive</code>定义的对象时 强制开启了<code>deep</code>深层监视，无法关闭</p>
 <p>3 监听<code>reactive</code>定义对象中的某个属性 ，<code>prop</code>不能直接写<code>ob1.prop</code>需要写成返回值的样式 <code>()=&gt;ob1.prop</code></p>
 <p>4 监听对象中的深层属性如<code>ob1.job</code>，需要开启<code>deep</code></p>
 <p><code>watchEffect</code>默认开启<code>immediate</code>，只监视回调函数中被使用的值</p>
-<h6 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h6><p>创建前后&gt;&gt;<code> setup()</code></p>
-<p>挂载前后<code>onBeforeMount</code>&#x2F;<code>onMounted</code></p>
-<p>更新前后<code>onBeforeUpdated</code>&#x2F;<code>onUpdated</code></p>
-<p>卸载前后<code>onBeforeUnmount</code>&#x2F;<code>onUnmounted</code></p>
-<h6 id="自定义-hook"><a href="#自定义-hook" class="headerlink" title="自定义 hook"></a>自定义 hook</h6><p><code>toRef </code>创建一个 ref 对象，其 value 值指向另一个对象的中的某个属性</p>
+<h6 id="生命周期">生命周期<a title="#生命周期" href="#生命周期"></a></h6>
+<p>创建前后&gt;&gt;<code> setup()</code></p>
+<p>挂载前后<code>onBeforeMount</code>/<code>onMounted</code></p>
+<p>更新前后<code>onBeforeUpdated</code>/<code>onUpdated</code></p>
+<p>卸载前后<code>onBeforeUnmount</code>/<code>onUnmounted</code></p>
+<h6 id="自定义-hook">自定义 hook<a title="#自定义-hook" href="#自定义-hook"></a></h6>
+<p><code>toRef </code>创建一个 ref 对象，其 value 值指向另一个对象的中的某个属性</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="title function_">toRef</span>(person, <span class="string">&quot;name&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <p><code>toRefs</code>可以展开一个 reactive 生成的 proxy 对象，让它成为一个普通对象，但该对象中的所有属性都是一个 ref 对象</p>
-<h6 id="移除了-native"><a href="#移除了-native" class="headerlink" title="移除了.native"></a>移除了.<code>native</code></h6><p>想要为组件绑定如 click 这种原生事件时，只需注意不要在 emits 中接受即可，即可防止 click 被视为自定义事件，相同的，若要重载 click 事件，在 emits 中接收即可</p>
+<h6 id="移除了.native">移除了.<code>native</code><a title="#移除了.native" href="#移除了.native"></a></h6>
+<p>想要为组件绑定如 click 这种原生事件时，只需注意不要在 emits 中接受即可，即可防止 click 被视为自定义事件，相同的，若要重载 click 事件，在 emits 中接收即可</p>
 <p>移除过滤器</p>
 <p><code>fragment </code>组件模板中可以不写根元素，减少了性能开销</p>
 <p><code>teleport</code>组件可以将某一部分元素输送到某个指定元素中，更方便定位。</p>
-<h6 id="异步组件"><a href="#异步组件" class="headerlink" title="异步组件"></a>异步组件</h6><p>使用<code>defineAsyncComponent</code>来引入一个异步组件，</p>
+<h6 id="异步组件">异步组件<a title="#异步组件" href="#异步组件"></a></h6>
+<p>使用<code>defineAsyncComponent</code>来引入一个异步组件，</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;defineAsyncComponent&#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Child</span>=<span class="title function_">defineAsyncComponent</span>(<span class="function">()=&gt;</span><span class="keyword">import</span>(<span class="string">&#x27;./Components/Child&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">suspense</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">template</span> #<span class="attr">default</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--此处放置真正的组件--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">todo-list</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">template</span> #<span class="attr">fallback</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--此处放置骨架屏/渲染期间的显示--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>Loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">suspense</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p><code>shallowReactive</code>只有第一层数据拥有响应式</p>
 <p>如同</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> ob1=<span class="title function_">shallowReactive</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;zhangsan&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">18</span>,</span><br><span class="line">    <span class="attr">job</span>:&#123;</span><br><span class="line">        <span class="attr">j1</span>:<span class="string">&quot;stuff&quot;</span></span><br><span class="line">        <span class="attr">salary</span>:<span class="number">20</span> <span class="comment">// 深层次的数据将会是一个普通的对象</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
 <p>这样的数据，采用 shallowReactive 无法令 j1 和 salary 拥有响应式</p>
 <p><code>shallowRef</code>对于基本类型等同于 ref，对于对象类型，不会添加响应式</p>
 <p>readonly 只读</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">ob1 = <span class="title function_">readonly</span>(ob1)</span><br></pre></td></tr></table></figure>
-
 <p><strong><em>采用 readonly 不会令数据丢失响应式，但是会令数据不可更改</em></strong></p>
 <p><code>shallowReadonly</code>浅只读</p>
 <p>仅令 ob1 中的 name 和 age 不可更改，job 内部的属性可以更改</p>
 <p><code>toRaw</code>令一个 reactive 数据失去响应式</p>
 <p><code>markRaw</code>令一个 reactive 数据永远不能转为响应式</p>
-<p><strong><em>isRef:检查一个值是否为一个 ref 对象</em></strong><br><strong><em>lsReactive:检查一个对象是否是由 reactive 创建的响应式代理</em></strong><br><strong><em>isReadonly:检查—个对象是否是由 readonly 创建的只读代理<br>isProxy:检查一个对象是否是由 reactive 或者 readonly 方法创建的代理</em></strong></p>
-<p><code>provide</code>&#x2F;<code>inject</code>适用于祖孙通信</p>
+<p><strong><em>isRef:检查一个值是否为一个 ref 对象</em></strong><br>
+<strong><em>lsReactive:检查一个对象是否是由 reactive 创建的响应式代理</em></strong><br>
+<strong><em>isReadonly:检查—个对象是否是由 readonly 创建的只读代理<br>
+isProxy:检查一个对象是否是由 reactive 或者 readonly 方法创建的代理</em></strong></p>
+<p><code>provide</code>/<code>inject</code>适用于祖孙通信</p>
 <p>祖先组件无需指名传值给哪个后代，后代也无需声明数据来源</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">provide</span>(name, data)</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">inject</span>(name)</span><br></pre></td></tr></table></figure>
-
 <p>customRef 自定义 ref</p>
 <hr>
 ]]></content>
@@ -124,10 +122,8 @@
     <url>/2023/04/23/js-object-sort/</url>
     <content><![CDATA[<p>当你创建了一个对象类似于：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line">obj.<span class="property">prop1</span> = <span class="string">&quot;Foo&quot;</span></span><br><span class="line">obj.<span class="property">prop2</span> = <span class="string">&quot;Bar&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>那它是否总是能表现为：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123; prop1 : <span class="string">&quot;Foo&quot;</span>, prop2 : <span class="string">&quot;Bar&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
-
 <p>换句话说，js 是否总能保证对象的顺序？</p>
 <p>答案是能够保证，但不一定是插入顺序（ES 2015 之前）</p>
 <p>大部分浏览器都遵循这样的迭代规则：</p>
@@ -137,11 +133,13 @@
 <p>3.符号名称，按插入顺序排列（ES 2015 保证所有浏览器都符合此要求）</p>
 </blockquote>
 <p>一些较旧的浏览器采用的是前两种，按插入顺序迭代所有键。如果键可以被解析为整数，那么最好不要依赖于任何特定的迭代顺序。</p>
-<p>当前语言规范（ES 2015 及以后）中，插入顺序被保留，除非键被解析为正整数（包括“7”或“99”这样字符串包裹的整数），这种情况下行为因浏览器而异。比如，Chrome&#x2F;V8 在键解析为数字时将不遵守插入顺序。</p>
-<h4 id="Demo"><a href="#Demo" class="headerlink" title="Demo:"></a>Demo:</h4><p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305161056090.png" alt="image-20230516105647021"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305161057834.png" alt="image-20230516105709791"></p>
+<p>当前语言规范（ES 2015 及以后）中，插入顺序被保留，除非键被解析为正整数（包括“7”或“99”这样字符串包裹的整数），这种情况下行为因浏览器而异。比如，Chrome/V8 在键解析为数字时将不遵守插入顺序。</p>
+<h4 id="demo:">Demo:<a title="#demo:" href="#demo:"></a></h4>
+<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305161056090.png" alt="image-20230516105647021" loading="lazy" class="φbp"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202305161057834.png" alt="image-20230516105709791" loading="lazy" class="φbp"></p>
 <p>在 chrome 中，整数键不遵守插入顺序，而是升序。</p>
-<h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>这是一个很好的，现有的约定俗成的行为驱动规范完善的例子，但开发时并不能确定所处的运行环境，但就对象中 key 的顺序而言，最好不要依赖规范，而是自行遍历再过滤 key。或者采用 map 来保证 key 的顺序固定，map 中的键是有序的，map 在遍历的时候保证会按照插入顺序来迭代</p>
+<h4 id="后记">后记<a title="#后记" href="#后记"></a></h4>
+<p>这是一个很好的，现有的约定俗成的行为驱动规范完善的例子，但开发时并不能确定所处的运行环境，但就对象中 key 的顺序而言，最好不要依赖规范，而是自行遍历再过滤 key。或者采用 map 来保证 key 的顺序固定，map 中的键是有序的，map 在遍历的时候保证会按照插入顺序来迭代</p>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -155,15 +153,14 @@
     <url>/2023/02/22/keep-menu-open-in-element-plus/</url>
     <content><![CDATA[<p>​</p>
 <p>在element plus中，有时我们需要始终保持菜单的展开状态（如单独的全展开的分类页），而在 element plus 中并未提供相应的属性。</p>
-<p>但是可以首先为<code>el-menu</code>设置<code>default-openeds</code> 属性，值为需要展开的菜单。<br>然后直接在<code>el-menu</code>的属性中，为菜单创建<code>ref</code>实例，并绑定<code>close</code>方法，在<code>close</code>方法中调用菜单实例身上的<code>open</code>方法来再次展开这个菜单。</p>
+<p>但是可以首先为<code>el-menu</code>设置<code>default-openeds</code> 属性，值为需要展开的菜单。<br>
+然后直接在<code>el-menu</code>的属性中，为菜单创建<code>ref</code>实例，并绑定<code>close</code>方法，在<code>close</code>方法中调用菜单实例身上的<code>open</code>方法来再次展开这个菜单。</p>
 <p>​需要保持菜单展开的情况许多时候还需要去除二级菜单后面的小箭头，可以通过为<code>.el-sub-menu__icon-arrow</code>设置 <code>display: none !important;</code> 来清除二级菜单后的按钮。</p>
 <p>模板：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-menu</span></span></span><br><span class="line"><span class="tag">	<span class="attr">class</span>=<span class="string">&quot;el-menu-demo&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">:ellipsis</span>=<span class="string">&quot;false&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">:default-openeds</span>=<span class="string">&quot;[&#x27;2&#x27;, &#x27;2-4&#x27;]&quot;</span></span></span><br><span class="line"><span class="tag">	@<span class="attr">close</span>=<span class="string">&quot;keepopen&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">ref</span>=<span class="string">&quot;menuRef&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;0&quot;</span>&gt;</span>LOGO<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;flex-grow&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;1&quot;</span>&gt;</span>Processing Center<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-sub-menu</span> <span class="attr">index</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">template</span> #<span class="attr">title</span>&gt;</span>Workspace<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;2-1&quot;</span>&gt;</span>item one<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;2-2&quot;</span>&gt;</span>item two<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;2-3&quot;</span>&gt;</span>item three<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">el-sub-menu</span> <span class="attr">index</span>=<span class="string">&quot;2-4&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">template</span> #<span class="attr">title</span>&gt;</span>item four<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;2-4-1&quot;</span>&gt;</span>item one<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;2-4-2&quot;</span>&gt;</span>item two<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;2-4-3&quot;</span>&gt;</span>item three<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">el-sub-menu</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">el-sub-menu</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-menu</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>方法：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> menuRef = ref &lt; any &gt; <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">keepopen</span> = (<span class="params">s</span>) =&gt; &#123;</span><br><span class="line">	menuRef.<span class="property">value</span>.<span class="title function_">open</span>(s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/img1.png" alt="效果"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/img1.png" alt="效果" loading="lazy" class="φbp"></p>
 ]]></content>
       <categories>
         <category>Vue</category>
@@ -178,13 +175,15 @@
     <url>/2023/01/21/nginx-404/</url>
     <content><![CDATA[<p>解决刷新 404 问题：</p>
 <ol>
-<li><p>使用 hash 模式路由</p>
+<li>
+<p>使用 hash 模式路由</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//vue3</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="title function_">createRouter</span>(&#123;</span><br><span class="line">	<span class="attr">linkActiveClass</span>: <span class="string">&quot;active&quot;</span>,</span><br><span class="line">	<span class="attr">history</span>: <span class="title function_">createWebHistory</span>(),</span><br><span class="line">	routes,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//vue2</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">Router</span>(&#123;</span><br><span class="line">	<span class="attr">mode</span>: <span class="string">&quot;hash&quot;</span>,</span><br><span class="line">	<span class="attr">routes</span>: [</span><br><span class="line">		&#123; <span class="attr">path</span>: <span class="string">&quot;/&quot;</span>, <span class="attr">redirect</span>: <span class="string">&quot;/login&quot;</span> &#125;,</span><br><span class="line">		&#123; <span class="attr">path</span>: <span class="string">&quot;/login&quot;</span>, <span class="attr">component</span>: <span class="title class_">Login</span> &#125;,</span><br><span class="line">	],</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在 nginx 中配置</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">location</span> / &#123;</span><br><span class="line">    <span class="attribute">root</span>   html/dist;</span><br><span class="line">    <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">    <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>
+<p>在 nginx 中配置</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">location</span> / &#123;</span><br><span class="line">    <span class="attribute">root</span>   html/dist;</span><br><span class="line">    <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">    <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 ]]></content>
       <categories>
@@ -213,13 +212,17 @@
     <url>/2023/05/29/solidity-func/</url>
     <content><![CDATA[<p>function <function name>(<parameter types>) {internal|external|public|private} [pure|view|payable] [returns (<return types>)]</p>
 <ol>
-<li><p><code>function</code>：声明函数时的固定用法，想写函数，就要以 function 关键字开头。</p>
+<li>
+<p><code>function</code>：声明函数时的固定用法，想写函数，就要以 function 关键字开头。</p>
 </li>
-<li><p><code>&lt;function name&gt;</code>：函数名。</p>
+<li>
+<p><code>&lt;function name&gt;</code>：函数名。</p>
 </li>
-<li><p><code>(&lt;parameter types&gt;)</code>：圆括号里写函数的参数，也就是要输入到函数的变量类型和名字。</p>
+<li>
+<p><code>(&lt;parameter types&gt;)</code>：圆括号里写函数的参数，也就是要输入到函数的变量类型和名字。</p>
 </li>
-<li><p><code>&#123;internal|external|public|private&#125;</code>：函数可见性说明符，一共 4 种。没标明函数类型的，默认<code>public</code>。合约之外的函数，即”自由函数”，始终具有隐含<code>internal</code>可见性。</p>
+<li>
+<p><code>&#123;internal|external|public|private&#125;</code>：函数可见性说明符，一共 4 种。没标明函数类型的，默认<code>public</code>。合约之外的函数，即&quot;自由函数&quot;，始终具有隐含<code>internal</code>可见性。</p>
 <ul>
 <li><code>public</code>: 内部外部均可见。</li>
 <li><code>private</code>: 只能从本合约内部访问，继承的合约也不能用。</li>
@@ -230,17 +233,19 @@
 <p><strong>Note 2</strong>: <code>public|private|internal</code>  也可用于修饰状态变量。 <code>public</code>变量会自动生成同名的<code>getter</code>函数，用于查询数值。</p>
 <p><strong>Note 3</strong>: 没有标明可见性类型的状态变量，默认为<code>internal</code>。</p>
 </li>
-<li><p><code>[pure|view|payable]</code>：决定函数权限&#x2F;功能的关键字。<code>payable</code>（可支付的）很好理解，带着它的函数，运行的时候可以给合约转入<code>ETH</code>。</p>
+<li>
+<p><code>[pure|view|payable]</code>：决定函数权限/功能的关键字。<code>payable</code>（可支付的）很好理解，带着它的函数，运行的时候可以给合约转入<code>ETH</code>。</p>
 </li>
-<li><p><code>[returns ()]</code>：函数返回的变量类型和名称。</p>
+<li>
+<p><code>[returns ()]</code>：函数返回的变量类型和名称。</p>
 </li>
 </ol>
-<p>关于 pure&#x2F;view：</p>
+<p>关于 pure/view：</p>
 <p>被 pure 修饰的函数不可读取也不可修改链上数据，即纯粹的函数，函数内部无法直接读到合约内的变量，可以传入参数进行处理</p>
 <p>被 view 修饰的函数可以读取链上数据，但是不能修改</p>
 <p>默认为 payable 状态，可读可写</p>
 <blockquote>
-<p>注：实际上 pure&#x2F;view 修饰的函数 gas 费会更高，猜测原因是由于默认支持链上数据读写，所以减少功能需要额外的标识，提升了 gas 费</p>
+<p>注：实际上 pure/view 修饰的函数 gas 费会更高，猜测原因是由于默认支持链上数据读写，所以减少功能需要额外的标识，提升了 gas 费</p>
 </blockquote>
 ]]></content>
       <categories>
@@ -258,13 +263,10 @@
 <p>代码：</p>
 <p>首先完成 vue-i18n 配置：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createI18n &#125; <span class="keyword">from</span> <span class="string">&quot;vue-i18n&quot;</span></span><br><span class="line"><span class="keyword">import</span> zh <span class="keyword">from</span> <span class="string">&quot;./zh&quot;</span></span><br><span class="line"><span class="keyword">import</span> en <span class="keyword">from</span> <span class="string">&quot;./en&quot;</span></span><br><span class="line"><span class="keyword">const</span> i18n = <span class="title function_">createI18n</span>(&#123;</span><br><span class="line">	<span class="attr">legacy</span>: <span class="literal">false</span>,</span><br><span class="line">	<span class="attr">locale</span>: <span class="string">&quot;zh&quot;</span>, <span class="comment">// 语言标识（缓存里面没有就用中文）</span></span><br><span class="line">	<span class="attr">messages</span>: &#123;</span><br><span class="line">		zh,</span><br><span class="line">		en,</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">if</span> (</span><br><span class="line">	<span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;lang&quot;</span>) !== <span class="string">&quot;zh&quot;</span> &amp;&amp;</span><br><span class="line">	<span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;lang&quot;</span>) !== <span class="string">&quot;en&quot;</span></span><br><span class="line">) &#123;</span><br><span class="line">	<span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;lang&quot;</span>, <span class="string">&quot;zh&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">i18n.<span class="property">global</span>.<span class="property">locale</span>.<span class="property">value</span> = <span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;lang&quot;</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> i18n</span><br></pre></td></tr></table></figure>
-
 <p>en.js:</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">	<span class="attr">meg</span>: &#123;</span><br><span class="line">		<span class="attr">language</span>: <span class="string">&quot;中文&quot;</span>,</span><br><span class="line">		<span class="attr">home</span>: <span class="string">&quot;Home&quot;</span>,</span><br><span class="line">		<span class="attr">category</span>: <span class="string">&quot;Category&quot;</span>,</span><br><span class="line">		<span class="attr">tags</span>: <span class="string">&quot;Tags&quot;</span>,</span><br><span class="line">		<span class="attr">test</span>: <span class="string">&quot;Test&quot;</span>,</span><br><span class="line">		<span class="attr">articles</span>: <span class="string">&quot;Articles&quot;</span>,</span><br><span class="line">		<span class="attr">album</span>: <span class="string">&quot;Album&quot;</span>,</span><br><span class="line">		<span class="attr">finNew</span>: <span class="string">&quot;Latest Articles&quot;</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>zh.js:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">	<span class="attr">meg</span>: &#123;</span><br><span class="line">		<span class="attr">language</span>: <span class="string">&quot;English&quot;</span>,</span><br><span class="line">		<span class="attr">home</span>: <span class="string">&quot;主页&quot;</span>,</span><br><span class="line">		<span class="attr">category</span>: <span class="string">&quot;分类&quot;</span>,</span><br><span class="line">		<span class="attr">tags</span>: <span class="string">&quot;标签&quot;</span>,</span><br><span class="line">		<span class="attr">test</span>: <span class="string">&quot;测试&quot;</span>,</span><br><span class="line">		<span class="attr">articles</span>: <span class="string">&quot;文章&quot;</span>,</span><br><span class="line">		<span class="attr">album</span>: <span class="string">&quot;相册&quot;</span>,</span><br><span class="line">		<span class="attr">finNew</span>: <span class="string">&quot;最新文章&quot;</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>router.js</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//路由中的定义方式</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;home&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">HomeView</span>,</span><br><span class="line">    <span class="attr">meta</span>: &#123;</span><br><span class="line">      <span class="attr">title</span>: i18n.<span class="property">global</span>.<span class="title function_">t</span>(<span class="string">&#x27;meg.home&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="comment">//后置守卫</span></span><br><span class="line">router.<span class="title function_">afterEach</span>(<span class="function">(<span class="params">to, <span class="keyword">from</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">title</span> = (i18n.<span class="property">global</span>.<span class="property">locale</span>.<span class="property">value</span> === <span class="string">&#x27;zh&#x27;</span>) ? <span class="string">&#x27;Hibi 博客站&#x27;</span> : <span class="string">&#x27;Hibi Blog&#x27;</span> + <span class="string">&#x27;-&#x27;</span> + to.<span class="property">meta</span>.<span class="property">title</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 ]]></content>
