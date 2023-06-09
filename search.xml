@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>错误的v-deep弃用警告</title>
-    <url>/2023/05/12/Incorrect-deep-deprecation-warning/</url>
+    <url>/CSS/Incorrect-deep-deprecation-warning/</url>
     <content><![CDATA[<p>在 sass/scss 项目中</p>
 <p>注意到项目中经常会有关于<code>::v-deep</code>的弃用警告，但是项目里又搜不到<code>::v-deep</code></p>
 <p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/%E8%AD%A6%E5%91%8A.jpg" alt="警告" loading="lazy" class="φbp"></p>
@@ -29,7 +29,7 @@
   </entry>
   <entry>
     <title>Ant Design的菜单常用设置</title>
-    <url>/2023/06/02/ant-menu-common/</url>
+    <url>/React/ant-menu-common/</url>
     <content><![CDATA[<p>1.实现手风琴模式<br>
 Ant Design 默认没有为菜单组件提供手风琴模式的配置项，需要自己手动实现</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">handleChange</span> = (<span class="params">Keys: string[]</span>) =&gt; &#123;</span><br><span class="line">	<span class="comment">// 实现手风琴</span></span><br><span class="line">	<span class="title function_">setOpenKeys</span>([<span class="title class_">Keys</span>[<span class="title class_">Keys</span>.<span class="property">length</span> - <span class="number">1</span>]])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -47,7 +47,7 @@ Ant Design 默认没有为菜单组件提供手风琴模式的配置项，需要
   </entry>
   <entry>
     <title>初识Vue3</title>
-    <url>/2022/07/26/first-vue3/</url>
+    <url>/Vue/first-vue3/</url>
     <content><![CDATA[<h4 id="首次学习-vue3-时的笔记">首次学习 vue3 时的笔记<a title="#首次学习-vue3-时的笔记" href="#首次学习-vue3-时的笔记"></a></h4>
 <p>要从单个绑定获取多个 ref，请将  <code>ref</code>  绑定到一个更灵活的函数上：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">&quot;item in list&quot;</span> <span class="attr">:ref</span>=<span class="string">&quot;setItemRef&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -119,7 +119,7 @@ isProxy:检查一个对象是否是由 reactive 或者 readonly 方法创建的�
   </entry>
   <entry>
     <title>JS总能够保证对象顺序么</title>
-    <url>/2023/04/23/js-object-sort/</url>
+    <url>/JavaScript/js-object-sort/</url>
     <content><![CDATA[<p>当你创建了一个对象类似于：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line">obj.<span class="property">prop1</span> = <span class="string">&quot;Foo&quot;</span></span><br><span class="line">obj.<span class="property">prop2</span> = <span class="string">&quot;Bar&quot;</span></span><br></pre></td></tr></table></figure>
 <p>那它是否总是能表现为：</p>
@@ -150,7 +150,7 @@ isProxy:检查一个对象是否是由 reactive 或者 readonly 方法创建的�
   </entry>
   <entry>
     <title>在 element-plus 中保持菜单展开</title>
-    <url>/2023/02/22/keep-menu-open-in-element-plus/</url>
+    <url>/Vue/keep-menu-open-in-element-plus/</url>
     <content><![CDATA[<p>​</p>
 <p>在element plus中，有时我们需要始终保持菜单的展开状态（如单独的全展开的分类页），而在 element plus 中并未提供相应的属性。</p>
 <p>但是可以首先为<code>el-menu</code>设置<code>default-openeds</code> 属性，值为需要展开的菜单。<br>
@@ -172,7 +172,7 @@ isProxy:检查一个对象是否是由 reactive 或者 readonly 方法创建的�
   </entry>
   <entry>
     <title>Nginx部署刷新404</title>
-    <url>/2023/01/21/nginx-404/</url>
+    <url>/Vue/nginx-404/</url>
     <content><![CDATA[<p>解决刷新 404 问题：</p>
 <ol>
 <li>
@@ -196,7 +196,7 @@ isProxy:检查一个对象是否是由 reactive 或者 readonly 方法创建的�
   </entry>
   <entry>
     <title>react中使用...批量传递props</title>
-    <url>/2023/02/09/react-three-dot-props/</url>
+    <url>/React/react-three-dot-props/</url>
     <content><![CDATA[<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">	<span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">const</span> &#123; name1, age &#125; = <span class="variable language_">this</span>.<span class="property">props</span></span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">			<span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">				&#123;name1&#125;,&#123;age&#125;</span></span><br><span class="line"><span class="language-xml">			<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">		)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p = &#123; <span class="attr">name1</span>: <span class="string">&quot;tom&quot;</span>, <span class="attr">age</span>: <span class="number">1</span> &#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(&#123; ...p &#125;) <span class="comment">//输出对象p</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(...p) <span class="comment">//报错，没有迭代器iterator</span></span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">		<span class="tag">&lt;<span class="name">App</span> &#123;<span class="attr">...p</span>&#125;&gt;</span><span class="tag">&lt;/<span class="name">App</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">		&#123;/* 这里的花括号是react表明内部是js语法，而非es6展开运算符 */&#125;</span></span><br><span class="line"><span class="language-xml">		&#123;/* 此处传入的是name1=&quot;tom&quot;,age=1,而非p对象&#123;name1:&#x27;tom&#x27;,age:1&#125; */&#125;</span></span><br><span class="line"><span class="language-xml">		&#123;/* react为批量传递props提供了...迭代器，但仅能用于传递props */&#125;</span></span><br><span class="line"><span class="language-xml">	<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -209,7 +209,7 @@ isProxy:检查一个对象是否是由 reactive 或者 readonly 方法创建的�
   </entry>
   <entry>
     <title>solidity函数</title>
-    <url>/2023/05/29/solidity-func/</url>
+    <url>/Crypto/solidity-func/</url>
     <content><![CDATA[<p>function <function name>(<parameter types>) {internal|external|public|private} [pure|view|payable] [returns (<return types>)]</p>
 <ol>
 <li>
@@ -258,7 +258,7 @@ isProxy:检查一个对象是否是由 reactive 或者 readonly 方法创建的�
   </entry>
   <entry>
     <title>vue-router中使用i18n来进行网页标题的国际化</title>
-    <url>/2022/12/29/vue-router-i18n-html-title/</url>
+    <url>/Vue/vue-router-i18n-html-title/</url>
     <content><![CDATA[<p>思路很简单，在完成<code>vue-i18n</code>的安装后，第一次访问页面时候缓存默认语言，更改语言时，把当前语言缓存起来。在 i18n 中定义好不同语言的标题，然后在路由中引用作为 meta.title。在路由后置守卫中进行网页标题的修改。</p>
 <p>代码：</p>
 <p>首先完成 vue-i18n 配置：</p>
