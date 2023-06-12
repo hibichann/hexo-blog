@@ -1,5 +1,5 @@
 ---
-title: Ant Design的菜单常用设置
+title: Ant Design的菜单常用配置
 date: 2023-06-02 17:47:36
 categories:
   - React
@@ -24,7 +24,8 @@ const handleChange = (Keys: string[]) => {
 
 ```javascript
 let firstOpen = ""
-//菜单的key设置为路由地址，获取当前Url地址
+// 菜单的key设置为路由地址如'/user/info'
+// 获取当前Url地址
 const location = useLocation()
 //用于寻找key和当前页面地址对应项
 const findkey = (obj: ItemType) => obj?.key === location.pathname
