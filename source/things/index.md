@@ -5,10 +5,13 @@ date: 2023-06-06 16:42:01
 
 <div class="title"><i class="fa fa-question-circle"></i>&nbsp;DAPP Demo 基于 Goerli</div>
 <div class="">
-    <a class="robo" href="https://robopunk.pages.dev/">Robo Punk</a>
+    <a class="robo" href="https://robopunk.pages.dev/" target="_blank">Robo Punk</a>
     <br/>
-    <a class="krypt" href="https://krypt-test.pages.dev/"><img src="/things/logo.png" /></a>
+    <a class="krypt" href="https://krypt-test.pages.dev/" target="_blank"><img src="/things/logo.png" /></a>
 </div>
+<br/>
+<div class="title"><i class="fa fa-question-circle"></i>&nbsp;自建博客</div>
+<a href="https://github.com/hibichann/Vblog-frontend" target="_blank"><img src="https://user-images.githubusercontent.com/17671678/243233861-a56f79da-2a05-43fa-b79d-172309e7a5c0.png"/ ></a>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 @import url('https://fonts.googleapis.com/css?family=V2323');

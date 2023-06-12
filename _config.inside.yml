@@ -19,14 +19,14 @@ menu:
   ⛰️分类: /categories/Vue
   🏷️标签: /tags
   🧡友链: /links
-  🔆杂物: /things
+  🔆杂物&作品集: /things
   🔗Github: https://github.com/hibichann
 sns:
   email: coder101011@outlook.com
   github: https://github.com/hibichann
   twitter: https://twitter.com/misaka_level0
   telegram: https://t.me/hibichann
-  qq: 321606998
+  qq: /redirect/
 category:
   # 分类页分页大小，缺省值 `10`
   per_page: 10
