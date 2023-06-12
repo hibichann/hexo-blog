@@ -118,6 +118,43 @@ isProxy:检查一个对象是否是由 reactive 或者 readonly 方法创建的�
       </tags>
   </entry>
   <entry>
+    <title>hexo在网页中插入一段自定义的代码</title>
+    <url>/JavaScript/hexo-custom-plugin/</url>
+    <content><![CDATA[<p>在 hexo 根目录下创建文件夹<code>scripts</code>，然后写自己的代码进去<br>
+有时我们想要修改主题的默认样式，但是主题是<code>npm install</code>安装的，不在<code>themes</code>目录下，也可通过这种方式注入一段 js</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&quot;after_render:html&quot;</span>, <span class="keyword">function</span> (<span class="params">htmlContent</span>) &#123;</span><br><span class="line">	<span class="comment">// 在此处输入你想要注入的 CSS 样式代码</span></span><br><span class="line">	<span class="keyword">var</span> css = <span class="string">`.φbm &#123;</span></span><br><span class="line"><span class="string">        max-height: 500px;</span></span><br><span class="line"><span class="string">        object-fit: cover;</span></span><br><span class="line"><span class="string">        filter:brightness(0.95);</span></span><br><span class="line"><span class="string">        transition:all 0.2s;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    .φbm:hover&#123;</span></span><br><span class="line"><span class="string">        filter:unset;</span></span><br><span class="line"><span class="string">        transition:all 0.2s;</span></span><br><span class="line"><span class="string">        transform: scale(1.05);</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    `</span></span><br><span class="line">	<span class="comment">// 将 CSS 样式代码插入到 HTML 中</span></span><br><span class="line">	<span class="keyword">return</span> htmlContent.<span class="title function_">replace</span>(<span class="regexp">/&lt;\/head&gt;/i</span>, <span class="string">&quot;&lt;style&gt;&quot;</span> + css + <span class="string">&quot;&lt;/style&gt;&lt;/head&gt;&quot;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这段代码就可以自动的被 hexo 注入到项目中，具体参考 hexo 插件手册</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+        <tag>JavaScript</tag>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Javascript函数柯里化</title>
+    <url>/JavaScript/javascript-function-curry/</url>
+    <content><![CDATA[<p>函数柯里化就是接受多个参数的函数变换成接受一个单一参数(最初函数的第一个参数)的函数,并且返回接受余下的参数且返回结果的新函数的函数。<br>
+听起来有点绕，对吧？换句话就是：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">fn</span>(a, b, c)</span><br><span class="line"><span class="keyword">const</span> curryFn = <span class="title function_">curry</span>(fn)</span><br><span class="line"><span class="title function_">fn</span>(a, b, c) === <span class="title function_">curryFn</span>(a)(b)(c)</span><br></pre></td></tr></table></figure>
+<p>我们要做的就是实现这个<code>curry</code>函数，它不会调用函数，它只是对函数做了一次转换</p>
+<p>先来一个简单的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">x, y</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> curryAdd = <span class="title function_">curry</span>(add)</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">curry</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function">(<span class="params">x</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="function">(<span class="params">y</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="title function_">fn</span>(x, y)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>但这样的curry函数局限过大，那如何封装一个通用的curry函数呢？</p>
+<p>首先有两个目标，首先要确定函数执行的时机，然后就是参数收集的时机，如果参数没有收集完成，就继续收集和汇总参数。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">curry</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">curried</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (args.<span class="property">length</span> &gt;= fn.<span class="property">length</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> fn.<span class="title function_">apply</span>(<span class="variable language_">this</span>, args)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">function</span> (<span class="params">...args2</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> curried.<span class="title function_">apply</span>(<span class="variable language_">this</span>, args.<span class="title function_">concat</span>(args2))</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS总能够保证对象顺序么</title>
     <url>/JavaScript/js-object-sort/</url>
     <content><![CDATA[<p>当你创建了一个对象类似于：</p>
