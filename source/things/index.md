@@ -11,7 +11,7 @@ date: 2023-06-06 16:42:01
 </div>
 <br/>
 <div class="title"><i class="fa fa-question-circle"></i>&nbsp;自建博客</div>
-<a href="https://github.com/hibichann/Vblog-frontend" target="_blank"><img src="https://user-images.githubusercontent.com/17671678/243233861-a56f79da-2a05-43fa-b79d-172309e7a5c0.png"/ ></a>
+<a href="https://github.com/hibichann/Vblog-frontend" target="_blank"><img src="/things/blog.jpg"/ ></a>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 @import url('https://fonts.googleapis.com/css?family=V2323');

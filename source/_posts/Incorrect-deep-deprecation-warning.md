@@ -46,3 +46,6 @@ thumbnail: "https://cdn.jsdelivr.net/gh/hibichann/picgo@main/%E8%AD%A6%E5%91%8A.
 ```
 
 虽然后者也能工作，但是会错误地触发::v-deep 弃用警告
+
+顺带提了 issue，这个和上述 issue 并不完全重复
+[incorrect warning about "::v-deep", when ":deep" is wrongly used in a nested block with SASS](https://github.com/vuejs/core/issues/8313)
