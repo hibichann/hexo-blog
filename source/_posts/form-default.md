@@ -5,6 +5,7 @@ categories:
   - JavaScript
 tags:
   - JavaScript
+thumbnail: "https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202306150929505.png"
 ---
 
 想象有一个这样的表单：
