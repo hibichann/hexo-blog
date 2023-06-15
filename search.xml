@@ -209,26 +209,30 @@ isProxy:检查一个对象是否是由 reactive 或者 readonly 方法创建的�
       </tags>
   </entry>
   <entry>
-    <title>在 element-plus 中保持菜单展开</title>
-    <url>/Vue/keep-menu-open-in-element-plus/</url>
-    <content><![CDATA[<p>​</p>
-<p>在element plus中，有时我们需要始终保持菜单的展开状态（如单独的全展开的分类页），而在 element plus 中并未提供相应的属性。</p>
+    <title>keep-menu-open-in-element-plus</title>
+    <url>/uncategorized/keep-menu-open-in-element-plus/</url>
+    <content><![CDATA[<hr>
+<p>title: 在 element-plus 中保持菜单展开<br>
+date: 2023-02-22 20:35:12<br>
+categories:</p>
+<ul>
+<li>Vue<br>
+tags:</li>
+<li>Vue3</li>
+<li>Element Plus<br>
+thumbnail: “<a href="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/img1.png" target="_blank">https://cdn.jsdelivr.net/gh/hibichann/picgo@main/img1.png</a>”<br>
+—​</li>
+</ul>
+<p>在 element plus 中，有时我们需要始终保持菜单的展开状态（如单独的全展开的分类页），而在 element plus 中并未提供相应的属性。</p>
 <p>但是可以首先为<code>el-menu</code>设置<code>default-openeds</code> 属性，值为需要展开的菜单。<br>
 然后直接在<code>el-menu</code>的属性中，为菜单创建<code>ref</code>实例，并绑定<code>close</code>方法，在<code>close</code>方法中调用菜单实例身上的<code>open</code>方法来再次展开这个菜单。</p>
-<p>​需要保持菜单展开的情况许多时候还需要去除二级菜单后面的小箭头，可以通过为<code>.el-sub-menu__icon-arrow</code>设置 <code>display: none !important;</code> 来清除二级菜单后的按钮。</p>
+<p>​ 需要保持菜单展开的情况许多时候还需要去除二级菜单后面的小箭头，可以通过为<code>.el-sub-menu__icon-arrow</code>设置 <code>display: none !important;</code> 来清除二级菜单后的按钮。</p>
 <p>模板：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-menu</span></span></span><br><span class="line"><span class="tag">	<span class="attr">class</span>=<span class="string">&quot;el-menu-demo&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">:ellipsis</span>=<span class="string">&quot;false&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">:default-openeds</span>=<span class="string">&quot;[&#x27;2&#x27;, &#x27;2-4&#x27;]&quot;</span></span></span><br><span class="line"><span class="tag">	@<span class="attr">close</span>=<span class="string">&quot;keepopen&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">ref</span>=<span class="string">&quot;menuRef&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;0&quot;</span>&gt;</span>LOGO<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;flex-grow&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;1&quot;</span>&gt;</span>Processing Center<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-sub-menu</span> <span class="attr">index</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">template</span> #<span class="attr">title</span>&gt;</span>Workspace<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;2-1&quot;</span>&gt;</span>item one<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;2-2&quot;</span>&gt;</span>item two<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;2-3&quot;</span>&gt;</span>item three<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">el-sub-menu</span> <span class="attr">index</span>=<span class="string">&quot;2-4&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">template</span> #<span class="attr">title</span>&gt;</span>item four<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;2-4-1&quot;</span>&gt;</span>item one<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;2-4-2&quot;</span>&gt;</span>item two<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">el-menu-item</span> <span class="attr">index</span>=<span class="string">&quot;2-4-3&quot;</span>&gt;</span>item three<span class="tag">&lt;/<span class="name">el-menu-item</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">el-sub-menu</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">el-sub-menu</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-menu</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>方法：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> menuRef = ref &lt; any &gt; <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">keepopen</span> = (<span class="params">s</span>) =&gt; &#123;</span><br><span class="line">	menuRef.<span class="property">value</span>.<span class="title function_">open</span>(s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://cdn.jsdelivr.net/gh/hibichann/picgo@main/img1.png" alt="效果" loading="lazy" class="φbp"></p>
 ]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue3</tag>
-        <tag>Element Plus</tag>
-      </tags>
   </entry>
   <entry>
     <title>Nginx部署刷新404</title>
