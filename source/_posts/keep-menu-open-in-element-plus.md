@@ -1,15 +1,14 @@
 ---
-
 title: 在 element-plus 中保持菜单展开
 date: 2023-02-22 20:35:12
-categories:
+categories: 
+	- Vue
+tags: 
+	- Vue3 
+	- Element Plus
+thumbnail: "https://cdn.jsdelivr.net/gh/hibichann/picgo@main/img1.png"
 
-- Vue
-  tags:
-- Vue3
-- Element Plus
-  thumbnail: "https://cdn.jsdelivr.net/gh/hibichann/picgo@main/img1.png"
-  ---​
+---
 
 在 element plus 中，有时我们需要始终保持菜单的展开状态（如单独的全展开的分类页），而在 element plus 中并未提供相应的属性。
 
