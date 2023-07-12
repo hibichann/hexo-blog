@@ -49,3 +49,6 @@ thumbnail: "https://cdn.jsdelivr.net/gh/hibichann/picgo@main/%E8%AD%A6%E5%91%8A.
 
 顺带提了 issue，这个和上述 issue 并不完全重复
 [incorrect warning about "::v-deep", when ":deep" is wrongly used in a nested block with SASS](https://github.com/vuejs/core/issues/8313)
+
+> 2023-07-12:
+> issue 相关 MR 已被合并，现在该警告样式已经修改
