@@ -10,7 +10,7 @@ date: 2023-06-06 16:42:01
     <a class="krypt" href="https://krypt-test.pages.dev/" target="_blank"><img src="/things/logo.png" /></a>
 </div>
 <br/>
-<div class="title"><i class="fa fa-question-circle"></i>&nbsp;自建博客</div>
+<div class="title"><i class="fa fa-question-circle"></i>&nbsp;自建博客（点击图片打开github项目地址）</div>
 <a href="https://github.com/hibichann/Vblog-frontend" target="_blank"><img src="/things/blog.jpg"/ ></a>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
