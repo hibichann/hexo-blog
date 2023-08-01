@@ -15,9 +15,9 @@ menu:
   🏠主页: /
   🧑‍💻关于: /about
   🔍搜索: /search
-  💾归档: /archives
-  ⛰️分类: /categories/Vue
-  🏷️标签: /tags
+  # 💾归档: /archives
+  # ⛰️分类: /categories/Vue
+  # 🏷️标签: /tags
   🧡友链: /links
   🔆杂物&作品集: /things
   🔗Github: https://github.com/hibichann
