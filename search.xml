@@ -56,7 +56,7 @@ Ant Design 默认没有为菜单组件提供手风琴模式的配置项，需要
     <url>/JavaScript/distinguish-between-browser-refresh-and-close/</url>
     <content><![CDATA[<h4 id="起因">起因<a title="#起因" href="#起因"></a></h4>
 <p>起因呢是群里有人提问说如何区分浏览器刷新和关闭的事件，他需求在关闭浏览器时清空所有 localStorage 的数据，因为 uhhh————很奇怪，他们的项目要求不能使用 sessionStorage，只能使用 localStorage。</p>
-<p><strong>所以这篇文章讨论的是如何在不使用 sessionStorage 的情况下，区分并实现浏览器刷新和关闭的事件。</strong></p>
+<h4 id="所以这篇文章讨论的是如何在不使用-sessionstorage-的情况下，区分并实现浏览器刷新和关闭的事件。">所以这篇文章讨论的是如何在不使用 sessionStorage 的情况下，区分并实现浏览器刷新和关闭的事件。<a title="#所以这篇文章讨论的是如何在不使用-sessionstorage-的情况下，区分并实现浏览器刷新和关闭的事件。" href="#所以这篇文章讨论的是如何在不使用-sessionstorage-的情况下，区分并实现浏览器刷新和关闭的事件。"></a></h4>
 <p>我一开始想到的是<code>onbeforeunload</code>或者<code>unload</code>事件，但是这个事件在浏览器关闭和刷新时都会触发的，<br>
 而且各个浏览器厂商的加载流程也不近相同，所以这个事件并不能用来区分浏览器刷新和关闭。<br>
 也包括其参数中的<code>e.currentTarget.performance.navigation.type</code>也是一样的。</p>
