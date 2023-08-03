@@ -72,6 +72,8 @@ function logline(now) {
 document.querySelector("#run").addEventListener("click", run);
 ```
 
+![结果](https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202308030948944.png)
+
 #### 2.非活动标签的超时
 
 为了优化后台标签的加载损耗（以及降低耗电量），浏览器会在非活动标签中强制执行一个最小的超时延迟。如果一个页面正在使用网络音频
