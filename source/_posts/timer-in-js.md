@@ -5,7 +5,7 @@ categories:
   - JavaScript
 tags:
   - JavaScript
-thumbnail: 'https://cdn.jsdelivr.net/gh/hibichann/picgo/img/202308030952843.png'
+thumbnail: 'https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202308030952843.png'
 ---
 
 有时你可能会注意到，你切换到了另一个网页，然后过一会儿再回到当前页面，这个页面上的某个计时器似乎比预期的要慢一些。
