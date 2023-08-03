@@ -72,7 +72,7 @@ function logline(now) {
 document.querySelector("#run").addEventListener("click", run);
 ```
 
-![结果](https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202308030948944.png)
+![结果](https://cdn.jsdelivr.net/gh/hibichann/picgo@main/202308030952843.png)
 
 #### 2.非活动标签的超时
 
