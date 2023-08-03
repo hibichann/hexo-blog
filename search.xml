@@ -349,6 +349,52 @@ isProxy:检查一个对象是否是由 reactive 或者 readonly 方法创建的�
       </tags>
   </entry>
   <entry>
+    <title>js中的定时器似乎比实际时间更慢？</title>
+    <url>/JavaScript/timer-in-js/</url>
+    <content><![CDATA[<p>有时你可能会注意到，你切换到了另一个网页，然后过一会儿再回到当前页面，这个页面上的某个计时器似乎比预期的要慢一些。<br>
+难道是开发者肆意为之？想要在你等待计时器的时候，让你多看几眼广告或者多等几秒再开始下载？当然不是，这是因为浏览器的一些优化策略和单进程的<br>
+js 导致的。</p>
+<h4 id="1.嵌套超时">1.嵌套超时<a title="#1.嵌套超时" href="#1.嵌套超时"></a></h4>
+<p>正如 HTML 标准中规定的那样，一旦对 setTimeout 的嵌套调用被安排了 5<br>
+次，浏览器将强制执行 4<br>
+毫秒的最小超时。但这个嵌套的次数和超时时间各家浏览器的实可能不尽相同。</p>
+<p>这可以在下面的例子中看到，在这个例子中，我们嵌套了对 setTimeout 的调用，延迟为 0<br>
+毫秒，并记录每次调用处理程序时的延迟。前四次，延迟约为 0 毫秒，之后约为 4 毫秒：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;run&quot;</span>&gt;</span>运行<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>之前<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>现在<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>实际延时<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tbody</span> <span class="attr">id</span>=<span class="string">&quot;log&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> last = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> iterations = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">timeout</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 记录调用时间</span></span><br><span class="line">  <span class="title function_">logline</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getMilliseconds</span>());</span><br><span class="line">  <span class="comment">// 如果还没结束，计划下次调用</span></span><br><span class="line">  <span class="keyword">if</span> (iterations-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(timeout, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">run</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 清除日志</span></span><br><span class="line">  <span class="keyword">const</span> log = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#log&quot;</span>);</span><br><span class="line">  <span class="keyword">while</span> (log.<span class="property">lastElementChild</span>) &#123;</span><br><span class="line">    log.<span class="title function_">removeChild</span>(log.<span class="property">lastElementChild</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化迭代次数和开始时间戳</span></span><br><span class="line">  iterations = <span class="number">10</span>;</span><br><span class="line">  last = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getMilliseconds</span>();</span><br><span class="line">  <span class="comment">// 开启计时器</span></span><br><span class="line">  <span class="built_in">setTimeout</span>(timeout, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">logline</span>(<span class="params">now</span>) &#123;</span><br><span class="line">  <span class="comment">// 输出上一个时间戳、新的时间戳及差值</span></span><br><span class="line">  <span class="keyword">const</span> tableBody = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;log&quot;</span>);</span><br><span class="line">  <span class="keyword">const</span> logRow = tableBody.<span class="title function_">insertRow</span>();</span><br><span class="line">  logRow.<span class="title function_">insertCell</span>().<span class="property">textContent</span> = last;</span><br><span class="line">  logRow.<span class="title function_">insertCell</span>().<span class="property">textContent</span> = now;</span><br><span class="line">  logRow.<span class="title function_">insertCell</span>().<span class="property">textContent</span> = now - last;</span><br><span class="line">  last = now;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#run&quot;</span>).<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, run);</span><br></pre></td></tr></table></figure>
+<h4 id="2.非活动标签的超时">2.非活动标签的超时<a title="#2.非活动标签的超时" href="#2.非活动标签的超时"></a></h4>
+<p>为了优化后台标签的加载损耗（以及降低耗电量），浏览器会在非活动标签中强制执行一个最小的超时延迟。如果一个页面正在使用网络音频<br>
+API AudioContext 播放声音，也可以不执行该延迟。</p>
+<p>这方面的具体情况与浏览器有关：</p>
+<p>Firefox 桌面版和 Chrome 针对不活动标签都有一个 1 秒的最小超时值。 安卓版 Firefox<br>
+浏览器对不活动的标签有一个至少 15 分钟的超时，并可能完全卸载它们。<br>
+如果标签中包含 AudioContext，Firefox 不会对非活动标签进行节流。</p>
+<h4 id="3.单线程的-javascript">3.单线程的 JavaScript<a title="#3.单线程的-javascript" href="#3.单线程的-javascript"></a></h4>
+<p>JS 是单线程的，有它独特的事件循环机制。当我们调用 setTimeout<br>
+时，浏览器会将回调函数放入事件队列中，等待执行。当主线程执行完毕后，会立即执行事件队列中的回调函数。如果主线程执行时间过长，那么回调函数就会被延迟执行。</p>
+<p>事件循环机制的执行顺序:</p>
+<blockquote>
+<p>1.执行当前执行栈中的顺序<br>
+2.当执行栈是空的时候，事件循环会从事件队列中取出一个任务进行执行，该任务是宏任务<br>
+3.当宏任务执行完毕后，事件循环会检查是否有微任务需要执行，如果有会依次执行所有微任务，直到微任务队列为空<br>
+4.重复执行步骤 2-3，直到事件队列和微任务队列均为空</p>
+</blockquote>
+<p>所以如果页面（或操作系统/浏览器）正忙于其他任务，超时也可能比预期的晚。需要注意的一个重要情况是，在调用<br>
+setTimeout() 的线程结束之前，函数或代码片段不能被执行。例如：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;foo 被调用&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">setTimeout</span>(foo, <span class="number">0</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;setTimeout 之后的代码&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>会在控制台输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">setTimeout 之后的代码</span><br><span class="line">foo 被调用</span><br></pre></td></tr></table></figure>
+<p>出现这个结果的原因是，尽管 setTimeout 以 0ms<br>
+的延迟来调用函数，但这个任务已经被放入了队列中并且等待下一次执行；并不是立即执行；队列中的等待函数被调用之前，当前代码必须全部运行完毕，因此这里运行结果并非预想的那样。</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue-router中使用i18n来进行网页标题的国际化</title>
     <url>/Vue/vue-router-i18n-html-title/</url>
     <content><![CDATA[<p>思路很简单，在完成<code>vue-i18n</code>的安装后，第一次访问页面时候缓存默认语言，更改语言时，把当前语言缓存起来。在 i18n 中定义好不同语言的标题，然后在路由中引用作为 meta.title。在路由后置守卫中进行网页标题的修改。</p>
